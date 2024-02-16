@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To-Do List</title>
+        <style>
+                body{
+                    margin: 0;
+                    background: linear-gradient(to left, #000628, #209200);
+                }
+                .row{
+                    margin: auto;
+                    width: 400px;
+                    padding: 10px;
+                }
+                .container h1{
+                    color: rgb(255, 255, 255);
+                    font-size: 40px;
+                    font-weight: 700;
+                    text-align: center;
+                    margin-top: 100px;
+                    margin-bottom: 20px;
+                }
+                .row h1:hover{
+                    color: rgb(238, 109, 49);
+                }
+                .input-group{
+                    margin: auto;
+                    width: 100%;
+                    padding: 10px;
+                }
+                .input-group input{
+                    width: 100%;
+                    height: 30px;
+                    font-size: 20px;
+                    border: none;
+                    outline: none;
+                    border-radius: 10px;
+                    padding: 10px;
+                }
+                .form-group{
+                    margin: auto;
+                    width: 100%;
+                    padding: 10px;
+                }
+                .form-group input{
+                    width: 100px;
+                    height: 40px;
+                    font-size: 20px;
+                    border: none;
+                    outline: none;
+                    border-radius: 10px;
+                    padding: 10px;
+                    background-color: rgb(238, 109, 49);
+                    color: rgb(255, 255, 255);
+                }
+                .form-group input:hover{
+                    background-color: rgb(255, 255, 255);
+                    color: rgb(238, 109, 49);
+                }
+                #list-item{
+                    margin: auto;
+                    width: 100%;
+                    padding: 10px;
+                    list-style: none;
+                }
+                #list-item li{
+                    margin: auto;
+                    width: 100%;
+                    padding: 10px;
+                    font-size: 20px;
+                    border: 2px solid rgb(238, 109, 49);
+                    border-radius: 10px;
+                    margin-bottom: 10px;
+                    color: rgb(255, 255, 255);
+                }
+                #list-item li:hover{
+                    background-color: rgb(238, 109, 49);
+                    color: rgb(255, 255, 255);
+                }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="row">TO-DO LIST</h1>
+            <br>
+            <div class="row">
+                <form>
+                    <div class="input-group">
+                        <input type="text" id="task" placeholder="Enter task">
+                    </div>
+                    <div class="form-group">
+                        <input type="button" id="add" value="Add">
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <ul id="list-item">
+
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            var task = document.getElementById("task");
+            var list = document.getElementById("list-item");
+            var add = document.getElementById("add");
+
+            add.onclick = function(){
+                var txt = task.value;
+                if(txt == ""){
+                    alert("Please enter a task");
+                }
+                else{
+                    var li = document.createElement("li");
+                    li.innerHTML = txt;
+                    list.insertBefore(li, list.childNodes[0]);
+                    task.value = "";
+                }
+            }
+
+            list.onclick = function(ev){
+                if(ev.target.tagName == "LI"){
+                    ev.target.classList.toggle("checked");
+                }
+            }
+
+            
+        </script>
+    </body>
+</html>
